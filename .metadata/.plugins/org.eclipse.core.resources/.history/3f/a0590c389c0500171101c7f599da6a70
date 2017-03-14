@@ -1,0 +1,42 @@
+package expressivo;
+
+/**
+ * An immutable data type representing the simple form of an expression as a
+ * double
+ */
+
+public class FloatExpression implements Expression {
+	private double num;
+
+	public FloatExpression(double num) {
+		this.num = num;
+	}
+
+	/**
+	 * @return a string version of the integer represented
+	 */
+	@Override
+	public String toString() {
+		return "" + num;
+	}
+
+	/**
+	 * @param other
+	 *            any object
+	 * @return true if <b>other</b> is structurally equal to this object
+	 */
+	@Override
+	public boolean equals(Object other) {
+		if (!(other instanceof FloatExpression))
+			return false;
+		return ((FloatExpression) other).num == this.num;
+	}
+
+	/**
+	 * @return Hashcode equal to the integer represented
+	 */
+	@Override
+	public int hashCode() {
+		return (int) num;
+	}
+}

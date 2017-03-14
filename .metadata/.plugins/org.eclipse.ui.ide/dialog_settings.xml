@@ -9,6 +9,8 @@
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\Fabre\Desktop\Java\Chapter12"/>
+			<item value="C:\Users\Fabre\Desktop\Java\ps1-expressivo"/>
 			<item value="C:\Users\Fabre\Desktop\Java"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
