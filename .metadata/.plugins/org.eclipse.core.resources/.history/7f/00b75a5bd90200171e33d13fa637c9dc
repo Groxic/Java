@@ -1,5 +1,0 @@
-package expressivo;
-
-public class IntegerExpression extends Expression {
-
-}
