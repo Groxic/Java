@@ -1,0 +1,17 @@
+
+public interface Employee {
+	private int years;
+
+	public Employee(int initialYears) {
+		years = initialYears;
+	}
+
+	public int getVacationDays() {
+		return 10 + getSeniorityBonus();
+	}
+
+	// vacation days given for each year in the company
+	public int getSeniorityBonus() {
+		return 2 * years;
+	}
+}

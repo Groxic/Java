@@ -1,0 +1,20 @@
+
+public class Employee {
+	private int years;
+
+	public Employee() {
+		this(0);
+	}
+	public Employee(int initialYears) {
+		years = initialYears;
+	}
+
+	public int getVacationDays() {
+		return 10 + getSeniorityBonus();
+	}
+
+	// vacation days given for each year in the company
+	public int getSeniorityBonus() {
+		return 2 * years;
+	}
+}

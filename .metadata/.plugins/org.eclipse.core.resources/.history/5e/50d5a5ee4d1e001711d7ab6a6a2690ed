@@ -1,0 +1,10 @@
+
+public class Secretary extends Employee {
+	public Secretary() {
+		super();
+	}
+	
+	public int getSeniorityBonus() {
+		return 0;
+	}
+}

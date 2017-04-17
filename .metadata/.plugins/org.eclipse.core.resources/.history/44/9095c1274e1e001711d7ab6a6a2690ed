@@ -1,0 +1,11 @@
+
+public class Secretary extends Employee {
+	public Secretary() {
+		super();
+	}
+
+	@Override
+	public int getSeniorityBonus() {
+		return 0;
+	}
+}

@@ -1,0 +1,9 @@
+
+public class Marketer extends Employee {
+	public Marketer(int years) {
+		super(years);
+	}
+	public Marketer() {
+		super();
+	}
+}
