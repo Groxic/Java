@@ -1,0 +1,5 @@
+package org.jdesktop.j3d.examples.text3d;
+
+public class Position {
+
+}

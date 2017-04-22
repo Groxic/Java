@@ -1,9 +1,0 @@
-
-public class Secretary extends Employee {
-	public Secretary(int years) {
-		super(years);
-	}
-	public Secretary() {
-		super();
-	}
-}
