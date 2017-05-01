@@ -1,0 +1,9 @@
+
+public class Edge extends Piece {
+	private Color f1;
+	private Color f2;
+	
+	public Edge(int x, int y, int z, char orientation) {
+		super(x, y, z, orientation);
+	}
+}

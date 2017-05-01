@@ -1,0 +1,7 @@
+
+public class Edge extends Piece {
+
+	public Edge(int x, int y, int z, char orientation) {
+		super(x, y, z, orientation);
+	}
+}

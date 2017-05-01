@@ -1,0 +1,29 @@
+import java.awt.Color;
+
+public class Corner extends Piece {
+	private Color f1; // f1 faces orientation
+	private Color f2;
+	private Color f3;
+
+	public Corner(char orientation, Color f1, Color f2, Color f3) {
+		super(orientation);
+		this.f1 = f1;
+		this.f2 = f2;
+		this.f3 = f3;
+	}
+
+	@Override
+	public Color getF1() {
+		return f1;
+	}
+
+	@Override
+	public Color getF2() {
+		return f2;
+	}
+
+	@Override
+	public Color getF3() {
+		return f3;
+	}
+}

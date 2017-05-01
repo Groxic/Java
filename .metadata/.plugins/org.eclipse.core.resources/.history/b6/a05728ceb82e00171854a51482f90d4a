@@ -1,0 +1,12 @@
+import java.awt.Color;
+
+public class Edge extends Piece {
+	private Color f1; // f1 faces orientation
+	private Color f2;
+
+	public Edge(int x, int y, int z, char orientation, Color f1, Color f2) {
+		super(x, y, z, orientation);
+		this.f1 = f1;
+		this.f2 = f2;
+	}
+}
