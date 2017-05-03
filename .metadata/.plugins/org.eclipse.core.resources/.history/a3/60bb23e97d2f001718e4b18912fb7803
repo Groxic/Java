@@ -1,0 +1,58 @@
+
+public class Face {
+	public char[][] tiles;
+	private Face aboveFace;
+	private Face belowFace;
+	private Face leftFace;
+	private Face rightFace;
+
+	public Face(char c) {
+		tiles = new char[][] {
+		        { c, 'x', c }, { c, c, 'q' }, { c, c, 'y' }
+		};
+	}
+
+	public void rotateClockWise() {
+
+	}
+
+	public void rotateCounterClockWise() {
+
+	}
+
+	public char[] getSide(char s) {
+		switch (s) {
+			case 't': {
+				return tiles[0];
+			}
+			case 'b': {
+				return tiles[tiles.length - 1];
+			}
+			case 'l': {
+				int[] arr = new int[tiles.length];
+				for (int r = 0; r < tiles.length; r++)
+				{
+					arr[r] = tiles[0][r];
+				}
+				return arr;
+
+			}
+			case 'r': {
+				int[] arr = new int[3];
+				for (int r = 0; r < tiles.length; r++)
+				{
+					arr[r] = tiles[tiles.length - 1][r];
+				}
+				return arr;
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		Face f = new Face('w');
+		System.out.println(f.getSide('t'));
+		System.out.println(f.getSide('b'));
+		System.out.println(f.getSide('l'));
+		System.out.println(f.getSide('r'));
+	}
+}
