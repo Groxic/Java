@@ -49,7 +49,7 @@ public class Snake extends JPanel {
 	private void escape() {
 		System.exit(0);
 	}
-	
+
 	private boolean snakeCheck() throws InterruptedException {
 		Point head = snakeSegments.get(0);
 		int x = (int) head.getX();
@@ -61,7 +61,7 @@ public class Snake extends JPanel {
 		for (int i = 1; i < snakeSegments.size(); i++) {
 			Point p = snakeSegments.get(i);
 			if (p.equals(head)) {
-				initialize(); 
+				initialize();
 				return true;
 			}
 		}
@@ -79,7 +79,7 @@ public class Snake extends JPanel {
 	private static int getScore() {
 		return snakeSegments.size();
 	}
-	
+
 	private void moveSnake(KeyEvent e) {
 		switch (e.getKeyCode()) {
 			case KeyEvent.VK_LEFT:
@@ -95,10 +95,12 @@ public class Snake extends JPanel {
 		for (int i = snakeSegments.size() - 1; i > 0; i--) {
 			snakeSegments.set(i, snakeSegments.get(i - 1).getLocation());
 		}
-		if (dir < 0)
+		if (dir < 0) {
 			dir = 3;
-		else if (dir > 3)
+		}
+		else if (dir > 3) {
 			dir = 0;
+		}
 		Point p = snakeSegments.get(0);
 		switch (dir) {
 			case 0:
@@ -117,8 +119,7 @@ public class Snake extends JPanel {
 	}
 
 	private static void drawObjects(Graphics2D g) {
-		int STROKE_WIDTH = SIZE_MOD / 10;
-		g.setStroke(new BasicStroke(STROKE_WIDTH));
+		g.setStroke(new BasicStroke(SIZE_MOD / 10));
 		for (Point p : snakeSegments) {
 			int x = (int) p.getX();
 			int y = (int) p.getY();

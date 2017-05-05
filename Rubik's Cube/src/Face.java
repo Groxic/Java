@@ -1,3 +1,7 @@
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.util.Arrays;
 
 public class Face {
@@ -13,6 +17,43 @@ public class Face {
 			{ c, c, c },
 			{ c, c, c }
 		};
+	}
+
+	public void paint(Graphics g, int x, int y, int STEP) {
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		for (int r = 0; r < face.length; r++) {
+			for (int c = 0; c < face[0].length; c++) {
+				g2d.setColor(getColor(face[r][c]));
+				g2d.fillRect(x + STEP * c + 1, y + r * STEP + 1, STEP - STEP / 5, STEP - STEP / 5);
+			}
+		}
+	}
+
+	public static Color getColor(char c) {
+		switch (c) {
+			case 'g': {
+				return Color.GREEN;
+			}
+			case 'o': {
+				return Color.ORANGE;
+			}
+			case 'w': {
+				return Color.WHITE;
+			}
+			case 'r': {
+				return Color.RED;
+			}
+			case 'y': {
+				return Color.YELLOW;
+			}
+			case 'b': {
+				return Color.BLUE;
+			}
+			default: {
+				return Color.WHITE;
+			}
+		}
 	}
 
 	public void setAbove(Face f) {
@@ -79,7 +120,7 @@ public class Face {
 			case 'o': {
 				char[] tempArr = aboveFace.getSide('l');
 				aboveFace.setSide('l', leftFace.getSide('r'), true);
-				leftFace.setSide('r', belowFace.getSide('t'), true);
+				leftFace.setSide('r', belowFace.getSide('l'), true);
 				belowFace.setSide('l', rightFace.getSide('l'), false);
 				rightFace.setSide('l', tempArr, false);
 				break;
