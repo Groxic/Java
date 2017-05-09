@@ -1,6 +1,0 @@
-
-public class Corner extends Piece {
-	public Corner(int x, int y, int z) {
-		super(x, y, z);
-	}
-}
