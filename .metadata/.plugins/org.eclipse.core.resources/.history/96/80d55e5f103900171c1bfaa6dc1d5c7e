@@ -1,0 +1,7 @@
+import java.awt.Canvas;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+
+public class CubeHandler extends Canvas implements MouseListener, MouseMotionListener {
+	public RubiksCube cube = new RubiksCube();
+}

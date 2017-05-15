@@ -1,10 +1,15 @@
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.util.Scanner;
+
+import javax.swing.JFrame;
 
 // consider shifting array "cube" to orient cube and rename Faces: "one" ... "six" then assign connected faces to the face for modular implementation of rotation, not hardcoded
 // http://zetcode.com/
 // https://docs.oracle.com/javase/tutorial/2d/advanced/user.html
 
-public class RubiksCube {
+public class RubiksCube{
 	/*
 	 *		 G G G
 	 * 		 G 0 G
@@ -16,6 +21,8 @@ public class RubiksCube {
 	 *		 B 5 B
 	 *		 B B B
 	 */
+	public static int SIZE_MOD = 40;
+	public static Color BACK_GND = Color.BLACK;
 
 	// public int orient = 2; // which side is up
 	// #0
@@ -124,6 +131,12 @@ public class RubiksCube {
 
 	public static void main(String[] args) {
 		RubiksCube cube = new RubiksCube();
+		JFrame f = new JFrame();
+		f.add(cube);
+		f.setResizable(false);
+		f.setSize(12 * SIZE_MOD, 13 * SIZE_MOD);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setVisible(true);
 		Scanner console = intro(cube);
 		String s = console.nextLine();
 		while (s.length() > 0)

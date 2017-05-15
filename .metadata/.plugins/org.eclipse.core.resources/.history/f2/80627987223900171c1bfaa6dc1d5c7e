@@ -1,4 +1,7 @@
+import java.awt.Color;
 import java.util.Scanner;
+
+import javax.swing.JFrame;
 
 // consider shifting array "cube" to orient cube and rename Faces: "one" ... "six" then assign connected faces to the face for modular implementation of rotation, not hardcoded
 // http://zetcode.com/

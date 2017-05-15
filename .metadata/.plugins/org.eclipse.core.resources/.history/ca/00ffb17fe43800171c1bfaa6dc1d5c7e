@@ -1,6 +1,9 @@
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
@@ -8,7 +11,7 @@ import javax.swing.JFrame;
 // consider shifting array "cube" to orient cube and rename Faces: "one" ... "six" then assign connected faces to the face for modular implementation of rotation, not hardcoded
 // http://zetcode.com/
 @SuppressWarnings("serial")
-public class RubiksCube extends Canvas {
+public class RubiksCube extends Canvas implements MouseListener, MouseMotionListener {
 	/*
 	 *		 G G G
 	 * 		 G 0 G
@@ -38,7 +41,53 @@ public class RubiksCube extends Canvas {
 	public Face B = new Face('b');
 
 	public Face[] cube = { G, O, W, R, Y, B };
+	
+		public Ccanvas() {
+			
+		}
+		
+		@Override
+		public void mouseDragged(MouseEvent arg0) {
+			
+			
+		}
 
+		@Override
+		public void mouseMoved(MouseEvent arg0) {
+			
+			
+		}
+
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent arg0) {
+			
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent arg0) {
+			
+			
+		}
+	
 	public RubiksCube() {
 		G.setAbove(Y);
 		G.setBelow(W);
