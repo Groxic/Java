@@ -1,0 +1,12 @@
+import java.awt.Color;
+import java.awt.Rectangle;
+
+@SuppressWarnings("serial")
+public class ColorRect extends Rectangle {
+	public final Color COLOR;
+
+	public ColorRect(int x, int y, int w, int h, Color c) {
+		super(x, y, w, h);
+		COLOR = c;
+	}
+}

@@ -1,8 +1,8 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 // consider shifting array "cube" to orient cube and rename Faces: "one" ... "six" then assign connected faces to the face for modular implementation of rotation, not hardcoded
 // http://zetcode.com/
-// https://docs.oracle.com/javase/tutorial/2d/advanced/user.html
 
 public class RubiksCube {
 	/*
@@ -19,21 +19,30 @@ public class RubiksCube {
 
 	// public int orient = 2; // which side is up
 	// #0
-	public Face G = new Face('g');
+	public Face<Character> G = new Face<>();
 	// #1
-	public Face O = new Face('o');
+	public Face<Character> O = new Face<>();
 	// #2
-	public Face W = new Face('w');
+	public Face<Character> W = new Face<>();
 	// #3
-	public Face R = new Face('r');
+	public Face<Character> R = new Face<>();
 	// #4
-	public Face Y = new Face('y');
+	public Face<Character> Y = new Face<>();
 	// #5
-	public Face B = new Face('b');
+	public Face<Character> B = new Face<>();
 
-	public Face[] cube = { G, O, W, R, Y, B };
+	public ArrayList<Face<Character>> cube = new ArrayList<>();
+
+	// public Face<Character>[] cube = (Face<Character>[]) new Object[] { G, O,
+	// W, R, Y, B };
 
 	public RubiksCube() {
+		cube.add(G);
+		cube.add(O);
+		cube.add(W);
+		cube.add(R);
+		cube.add(Y);
+		cube.add(B);
 		G.setAbove(Y);
 		G.setBelow(W);
 		G.setLeft(O);
@@ -81,12 +90,16 @@ public class RubiksCube {
 		int faceNum = getIndexFromCenter(s.charAt(0));
 		if (end == '\'')
 		{
-			cube[faceNum].rotateCounterClockWise();
+			cube.get(faceNum).rotateCounterClockWise();
 		}
 		else
 		{
-			cube[faceNum].rotateClockWise();
+			cube.get(faceNum).rotateClockWise();
 		}
+	}
+
+	public Face<Character> get(int i) {
+		return cube.get(i);
 	}
 
 	public int getIndexFromCenter(char c) {

@@ -1,0 +1,13 @@
+import java.awt.Color;
+
+public class FaceRect extends Face {
+	public ColorRect[][] face;
+
+	public FaceRect(Color color) {
+		for (int r = 0; r < face.length; r++) {
+			for (int c = 0; c < face[0].length; c++) {
+				face[r][c] = new ColorRect(color);
+			}
+		}
+	}
+}

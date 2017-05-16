@@ -3,26 +3,29 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
 		<item value="" key="selection"/>
-		<item value="false" key="casesensitive"/>
+		<item value="true" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="// TODO Auto-generated method stub"/>
-			<item value="mouse"/>
-			<item value="setFrame"/>
-			<item value="private"/>
-			<item value="SIZE"/>
-			<item value="tiles"/>
-			<item value="face"/>
-			<item value="long"/>
+			<item value="getColor"/>
+			<item value="3 - 1"/>
+			<item value="face.size()"/>
+			<item value="Object"/>
+			<item value="E"/>
+			<item value="T"/>
+			<item value="&lt;T&gt;"/>
+			<item value="char"/>
 		</list>
 		<list key="replacehistory">
+			<item value="2"/>
+			<item value="3"/>
+			<item value="E"/>
+			<item value="Object"/>
+			<item value="&lt;E&gt;"/>
+			<item value="T[]"/>
 			<item value=""/>
 			<item value="public"/>
-			<item value="3"/>
-			<item value="face"/>
-			<item value="int"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
