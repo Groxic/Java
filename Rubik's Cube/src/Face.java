@@ -1,44 +1,70 @@
-import java.util.ArrayList;
+import java.awt.Color;
+import java.util.Arrays;
 
-public class Face<E> {
-	public ArrayList<ArrayList<E>> face;
-	private Face<E> aboveFace;
-	private Face<E> belowFace;
-	private Face<E> leftFace;
-	private Face<E> rightFace;
+// TODO: Codereview
+public class Face {
+	protected final int SIZE = 3;
+	public char[][] face = new char[SIZE][SIZE];
+	private Face aboveFace;
+	private Face belowFace;
+	private Face leftFace;
+	private Face rightFace;
 
-	public Face() {}
-
-	public Face(E c) {
-		face = new ArrayList<ArrayList<E>>();
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++) {
-				face.get(i).set(j, c);
+	public Face(char c) {
+		for (int i = 0; i < SIZE; i++) {
+			for (int j = 0; j < SIZE; j++) {
+				face[i][j] = c;
 			}
 		}
 	}
 
-	public void setAbove(Face<E> f) {
+	public static Color getColor(char c) {
+		switch (c) {
+			case 'g': {
+				return Color.GREEN;
+			}
+			case 'o': {
+				return Color.ORANGE;
+			}
+			case 'w': {
+				return Color.WHITE;
+			}
+			case 'r': {
+				return Color.RED;
+			}
+			case 'y': {
+				return Color.YELLOW;
+			}
+			case 'b': {
+				return Color.BLUE;
+			}
+			default: {
+				return Color.WHITE;
+			}
+		}
+	}
+
+	public void setAbove(Face f) {
 		aboveFace = f;
 	}
 
-	public void setBelow(Face<E> f) {
+	public void setBelow(Face f) {
 		belowFace = f;
 	}
 
-	public void setLeft(Face<E> f) {
+	public void setLeft(Face f) {
 		leftFace = f;
 	}
 
-	public void setRight(Face<E> f) {
+	public void setRight(Face f) {
 		rightFace = f;
 	}
 
 	public void rotateClockWise() {
-		E temp = face.get(0).get(0);
-		E temp2 = face.get(1).get(0);
-		face.get(0).set(0, face.get(2).get(0));
-		face.get(1).set(0, face.get(2).get(1));
+		char temp = face[0][0];
+		char temp2 = face[1][0];
+		face[0][0] = face[2][0];
+		face[1][0] = face[2][1];
 		face[2][0] = face[2][2];
 		face[2][1] = face[1][2];
 		face[2][2] = face[0][2];
@@ -46,9 +72,9 @@ public class Face<E> {
 		face[0][2] = temp;
 		face[0][1] = temp2;
 
-		switch ((char) face[1][1]) {
+		switch (face[1][1]) {
 			case 'w': {
-				E[] tempArr = aboveFace.getSide('b');
+				char[] tempArr = aboveFace.getSide('b');
 				aboveFace.setSide('b', leftFace.getSide('r'), true);
 				leftFace.setSide('r', belowFace.getSide('t'), false);
 				belowFace.setSide('t', rightFace.getSide('l'), true);
@@ -56,7 +82,7 @@ public class Face<E> {
 				break;
 			}
 			case 'y': {
-				E[] tempArr = aboveFace.getSide('t');
+				char[] tempArr = aboveFace.getSide('t');
 				aboveFace.setSide('t', leftFace.getSide('r'), false);
 				leftFace.setSide('r', belowFace.getSide('b'), true);
 				belowFace.setSide('b', rightFace.getSide('l'), false);
@@ -64,7 +90,7 @@ public class Face<E> {
 				break;
 			}
 			case 'g': {
-				E[] tempArr = aboveFace.getSide('t');
+				char[] tempArr = aboveFace.getSide('t');
 				aboveFace.setSide('t', leftFace.getSide('t'), false);
 				leftFace.setSide('t', belowFace.getSide('t'), false);
 				belowFace.setSide('t', rightFace.getSide('t'), false);
@@ -72,7 +98,7 @@ public class Face<E> {
 				break;
 			}
 			case 'b': {
-				E[] tempArr = aboveFace.getSide('b');
+				char[] tempArr = aboveFace.getSide('b');
 				aboveFace.setSide('b', leftFace.getSide('b'), false);
 				leftFace.setSide('b', belowFace.getSide('b'), false);
 				belowFace.setSide('b', rightFace.getSide('b'), false);
@@ -80,7 +106,7 @@ public class Face<E> {
 				break;
 			}
 			case 'o': {
-				E[] tempArr = aboveFace.getSide('l');
+				char[] tempArr = aboveFace.getSide('l');
 				aboveFace.setSide('l', leftFace.getSide('r'), true);
 				leftFace.setSide('r', belowFace.getSide('l'), true);
 				belowFace.setSide('l', rightFace.getSide('l'), false);
@@ -88,7 +114,7 @@ public class Face<E> {
 				break;
 			}
 			case 'r': {
-				E[] tempArr = aboveFace.getSide('r');
+				char[] tempArr = aboveFace.getSide('r');
 				aboveFace.setSide('r', leftFace.getSide('r'), false);
 				leftFace.setSide('r', belowFace.getSide('r'), false);
 				belowFace.setSide('r', rightFace.getSide('l'), true);
@@ -99,8 +125,8 @@ public class Face<E> {
 	}
 
 	public void rotateCounterClockWise() {
-		E temp = face[0][0];
-		E temp2 = face[0][1];
+		char temp = face[0][0];
+		char temp2 = face[0][1];
 		face[0][0] = face[0][2];
 		face[0][1] = face[1][2];
 		face[0][2] = face[2][2];
@@ -110,9 +136,9 @@ public class Face<E> {
 		face[2][0] = temp;
 		face[1][0] = temp2;
 
-		switch ((char) face[1][1]) {
+		switch (face[1][1]) {
 			case 'w': {
-				E[] tempArr = aboveFace.getSide('b');
+				char[] tempArr = aboveFace.getSide('b');
 				aboveFace.setSide('b', rightFace.getSide('l'), false);
 				rightFace.setSide('l', belowFace.getSide('t'), true);
 				belowFace.setSide('t', leftFace.getSide('r'), false);
@@ -120,7 +146,7 @@ public class Face<E> {
 				break;
 			}
 			case 'y': {
-				E[] tempArr = aboveFace.getSide('t');
+				char[] tempArr = aboveFace.getSide('t');
 				aboveFace.setSide('t', rightFace.getSide('l'), true);
 				rightFace.setSide('l', belowFace.getSide('b'), false);
 				belowFace.setSide('b', leftFace.getSide('r'), true);
@@ -128,7 +154,7 @@ public class Face<E> {
 				break;
 			}
 			case 'g': {
-				E[] tempArr = aboveFace.getSide('t');
+				char[] tempArr = aboveFace.getSide('t');
 				aboveFace.setSide('t', rightFace.getSide('t'), false);
 				rightFace.setSide('t', belowFace.getSide('t'), false);
 				belowFace.setSide('t', leftFace.getSide('t'), false);
@@ -136,7 +162,7 @@ public class Face<E> {
 				break;
 			}
 			case 'b': {
-				E[] tempArr = aboveFace.getSide('b');
+				char[] tempArr = aboveFace.getSide('b');
 				aboveFace.setSide('b', rightFace.getSide('b'), false);
 				rightFace.setSide('b', belowFace.getSide('b'), false);
 				belowFace.setSide('b', leftFace.getSide('b'), false);
@@ -144,7 +170,7 @@ public class Face<E> {
 				break;
 			}
 			case 'o': {
-				E[] tempArr = aboveFace.getSide('l');
+				char[] tempArr = aboveFace.getSide('l');
 				aboveFace.setSide('l', rightFace.getSide('l'), false);
 				rightFace.setSide('l', belowFace.getSide('l'), false);
 				belowFace.setSide('l', leftFace.getSide('r'), true);
@@ -152,7 +178,7 @@ public class Face<E> {
 				break;
 			}
 			case 'r': {
-				E[] tempArr = aboveFace.getSide('r');
+				char[] tempArr = aboveFace.getSide('r');
 				aboveFace.setSide('r', rightFace.getSide('l'), true);
 				rightFace.setSide('l', belowFace.getSide('r'), true);
 				belowFace.setSide('r', leftFace.getSide('r'), false);
@@ -163,59 +189,55 @@ public class Face<E> {
 	}
 
 	public void print(String prefix) {
-		for (ArrayList<E> r : face) {
+		for (char[] r : face) {
 			System.out.print(prefix);
-			for (E c : r) {
+			for (char c : r) {
 				System.out.print(c + " ");
 			}
-			if (!r.equals(face.get(2)))
-			{
-				System.out.println();
-			}
+			System.out.println();
 		}
 	}
 
 	public void printRow(int rNum) {
-		for (E c : face.get(rNum))
+		for (char c : face[rNum])
 		{
 			System.out.print(c + " ");
 		}
 	}
 
-	public void setSide(char side, ArrayList<E> to, boolean reverse) {
+	public void setSide(char side, char[] to, boolean reverse) {
 		if (reverse)
 		{
-			int size = 3;
-			for (int i = 0; i < size / 2; i++)
+			for (int i = 0; i < to.length / 2; i++)
 			{
-				E temp = to.get(i);
-				to.set(i, to.get(size - 1 - i));
-				to.set(size - 1 - i, temp);
+				char temp = to[i];
+				to[i] = to[to.length - 1 - i];
+				to[to.length - 1 - i] = temp;
 			}
 		}
 		switch (side) {
 			case 't': {
-				face.set(0, to);
+				face[0] = to;
 				break;
 			}
 			case 'b': {
-				face.set(2, to);
+				face[SIZE - 1] = to;
 				break;
 			}
 			case 'l': {
 				int i = 0;
-				for (E c : to)
+				for (char c : to)
 				{
-					face.get(i).set(0, c);
+					face[i][0] = c;
 					i++;
 				}
 				break;
 			}
 			case 'r': {
 				int i = 0;
-				for (E c : to)
+				for (char c : to)
 				{
-					face.get(i).set(2, c);
+					face[i][SIZE - 1] = c;
 					i++;
 				}
 				break;
@@ -225,28 +247,28 @@ public class Face<E> {
 		}
 	}
 
-	public ArrayList<E> getSide(char s) {
+	public char[] getSide(char s) {
 		switch (s) {
 			case 't': {
-				return new ArrayList<E>(face.get(0));
+				return Arrays.copyOf(face[0], face[0].length);
 			}
 			case 'b': {
-				return new ArrayList<E>(face.get(2));
+				return Arrays.copyOf(face[SIZE - 1], face[0].length);
 			}
 			case 'l': {
-				ArrayList<E> arr = new ArrayList<E>(3);
-				for (int r = 0; r < 3; r++)
+				char[] arr = new char[SIZE];
+				for (int r = 0; r < SIZE; r++)
 				{
-					arr.set(r, face.get(r).get(0));
+					arr[r] = face[r][0];
 				}
 				return arr;
 
 			}
 			case 'r': {
-				ArrayList<E> arr = new ArrayList<E>(3);
-				for (int r = 0; r < 3; r++)
+				char[] arr = new char[SIZE];
+				for (int r = 0; r < SIZE; r++)
 				{
-					arr.set(r, face.get(r).get(2));
+					arr[r] = face[r][SIZE - 1];
 				}
 				return arr;
 			}
