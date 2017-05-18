@@ -19,29 +19,8 @@ public class RectFace extends Face {
 		}
 	}
 
-	@Override
-	public void rotateClockWise() {
-		super.rotateClockWise();
-		updateFace();
-	}
-
-	@Override
-	public void rotateCounterClockWise() {
-		super.rotateCounterClockWise();
-		updateFace();
-	}
-
-	private void updateFace() {
-		for (int i = 0; i < SIZE; i++) {
-			for (int j = 0; j < SIZE; j++) {
-				rectFace[i][j].setColor(getColor(face[i][j]));
-			}
-		}
-	}
-
-	public RectFace(char c, int x, int y, int SIZE_MOD) {
+	public RectFace(char c, Color color, int x, int y, int SIZE_MOD) {
 		super(c);
-		Color color = getColor(c);
 		for (int i = 0; i < SIZE; i++) {
 			for (int j = 0; j < SIZE; j++) {
 				rectFace[i][j] = new ColorRect(x + c * SIZE_MOD, y + i * SIZE_MOD, SIZE_MOD, color);
@@ -50,6 +29,6 @@ public class RectFace extends Face {
 	}
 
 	public static void main(String[] args) {
-		RectFace r = new RectFace('r', 1, 1, 20);
+		RectFace r = new RectFace('r', Color.RED, 1, 1, 20);
 	}
 }

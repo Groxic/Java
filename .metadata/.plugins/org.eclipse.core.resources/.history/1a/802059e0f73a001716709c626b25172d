@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-// consider shifting array "cube" to orient cube and rename Faces: "one" ... "six" then assign connected faces to the face for modular implementation of rotation, not hardcoded
 // http://zetcode.com/
 
 public class RubiksCube {
@@ -15,10 +14,8 @@ public class RubiksCube {
 	 *		 B 5 B
 	 *		 B B B
 	 */
-
-	// public int orient = 2; // which side is up
 	// #0
-	public Face<char> G = new Face();
+	public Face G = new Face('g');
 	// #1
 	public Face O = new Face('o');
 	// #2
@@ -30,7 +27,7 @@ public class RubiksCube {
 	// #5
 	public Face B = new Face('b');
 
-	public Face[] cube = { G, O, W, R, Y, B };
+	public Face[] cube = new Face[] { G, O, W, R, Y, B };
 
 	public RubiksCube() {
 		G.setAbove(Y);
@@ -61,7 +58,6 @@ public class RubiksCube {
 
 	public void print() {
 		G.print("      ");
-		System.out.println();
 		for (int i = 0; i < 3; i++)
 		{
 			O.printRow(i);

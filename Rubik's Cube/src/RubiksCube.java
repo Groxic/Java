@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 // http://zetcode.com/
 
 public class RubiksCube {
@@ -15,21 +14,42 @@ public class RubiksCube {
 	 *		 B B B
 	 */
 	// #0
-	public Face G = new Face('g');
+	public Face G;
 	// #1
-	public Face O = new Face('o');
+	public Face O;
 	// #2
-	public Face W = new Face('w');
+	public Face W;
 	// #3
-	public Face R = new Face('r');
+	public Face R;
 	// #4
-	public Face Y = new Face('y');
+	public Face Y;
 	// #5
-	public Face B = new Face('b');
+	public Face B;
 
 	public Face[] cube = new Face[] { G, O, W, R, Y, B };
 
-	public RubiksCube() {
+	public RubiksCube(boolean useRectFace) {
+		if (useRectFace) {
+			G = new RectFace('g');
+			O = new RectFace('o');
+			W = new RectFace('w');
+			R = new RectFace('r');
+			Y = new RectFace('y');
+			B = new RectFace('b');
+		}
+		else {
+			G = new Face('g');
+			O = new Face('o');
+			W = new Face('w');
+			R = new Face('r');
+			Y = new Face('y');
+			B = new Face('b');
+		}
+		linkSides();
+		cube = new Face[] { G, O, W, R, Y, B };
+	}
+
+	private void linkSides() {
 		G.setAbove(Y);
 		G.setBelow(W);
 		G.setLeft(O);
@@ -122,7 +142,7 @@ public class RubiksCube {
 	}
 
 	public static void main(String[] args) {
-		RubiksCube cube = new RubiksCube();
+		RubiksCube cube = new RubiksCube(false);
 		Scanner console = intro(cube);
 		String s = console.nextLine();
 		while (s.length() > 0)

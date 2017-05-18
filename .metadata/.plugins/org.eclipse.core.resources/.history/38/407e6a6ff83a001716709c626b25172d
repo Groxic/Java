@@ -1,17 +1,8 @@
-import java.awt.Canvas;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.util.Scanner;
 
-import javax.swing.JFrame;
-
-// consider shifting array "cube" to orient cube and rename Faces: "one" ... "six" then assign connected faces to the face for modular implementation of rotation, not hardcoded
 // http://zetcode.com/
-@SuppressWarnings("serial")
-public class RubiksCube extends Canvas implements MouseListener, MouseMotionListener {
+
+public class RubiksCube {
 	/*
 	 *		 G G G
 	 * 		 G 0 G
@@ -23,65 +14,42 @@ public class RubiksCube extends Canvas implements MouseListener, MouseMotionList
 	 *		 B 5 B
 	 *		 B B B
 	 */
-	public static int SIZE_MOD = 40;
-	public static Color BACK_GND = Color.BLACK;
-
-	// public int orient = 2; // which side is up
 	// #0
-	public Face G = new Face('g');
+	public Face G;
 	// #1
-	public Face O = new Face('o');
+	public Face O;
 	// #2
-	public Face W = new Face('w');
+	public Face W;
 	// #3
-	public Face R = new Face('r');
+	public Face R;
 	// #4
-	public Face Y = new Face('y');
+	public Face Y;
 	// #5
-	public Face B = new Face('b');
+	public Face B;
 
-	public Face[] cube = { G, O, W, R, Y, B };
+	public Face[] cube = new Face[] { G, O, W, R, Y, B };
 
-	public Ccanvas() {
-
+	public RubiksCube(boolean useRectFace) {
+		if (useRectFace) {
+			/*G = new RectFace();
+			O = new RectFace();
+			W = new RectFace();
+			R = new RectFace();
+			Y = new RectFace();
+			B = new RectFace();*/
+		}
+		else {
+			G = new Face('g');
+			O = new Face('o');
+			W = new Face('w');
+			R = new Face('r');
+			Y = new Face('y');
+			B = new Face('b');
+		}
+		linkSides();
 	}
 
-	@Override
-	public void mouseDragged(MouseEvent arg0) {
-
-	}
-
-	@Override
-	public void mouseMoved(MouseEvent arg0) {
-
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-
-	}
-
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-
-	}
-
-	public RubiksCube() {
+	private void linkSides() {
 		G.setAbove(Y);
 		G.setBelow(W);
 		G.setLeft(O);
@@ -110,7 +78,6 @@ public class RubiksCube extends Canvas implements MouseListener, MouseMotionList
 
 	public void print() {
 		G.print("      ");
-		System.out.println();
 		for (int i = 0; i < 3; i++)
 		{
 			O.printRow(i);
@@ -135,6 +102,10 @@ public class RubiksCube extends Canvas implements MouseListener, MouseMotionList
 		{
 			cube[faceNum].rotateClockWise();
 		}
+	}
+
+	public Face get(int i) {
+		return cube[i];
 	}
 
 	public int getIndexFromCenter(char c) {
@@ -163,16 +134,6 @@ public class RubiksCube extends Canvas implements MouseListener, MouseMotionList
 		}
 	}
 
-	@Override
-	public void paint(Graphics g) {
-		setBackground(BACK_GND);
-		cube[0].paint(g, 3 * SIZE_MOD, 0, SIZE_MOD);
-		for (int i = 1; i < cube.length - 1; i++) {
-			cube[i].paint(g, SIZE_MOD * 3 * (i - 1), 3 * SIZE_MOD, SIZE_MOD);
-		}
-		cube[5].paint(g, 3 * SIZE_MOD, 6 * SIZE_MOD, SIZE_MOD);
-	}
-
 	public static Scanner intro(RubiksCube cube) {
 		cube.print();
 		System.out.println(
@@ -181,20 +142,13 @@ public class RubiksCube extends Canvas implements MouseListener, MouseMotionList
 	}
 
 	public static void main(String[] args) {
-		RubiksCube cube = new RubiksCube();
-		JFrame f = new JFrame();
-		f.add(cube);
-		f.setResizable(false);
-		f.setSize(12 * SIZE_MOD, 13 * SIZE_MOD);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setVisible(true);
+		RubiksCube cube = new RubiksCube(false);
 		Scanner console = intro(cube);
 		String s = console.nextLine();
 		while (s.length() > 0)
 		{
 			cube.rotateFace(s);
 			cube.print();
-			cube.repaint();
 			s = console.nextLine();
 		}
 		console.close();

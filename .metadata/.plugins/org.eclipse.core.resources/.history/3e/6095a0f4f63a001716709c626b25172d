@@ -9,7 +9,7 @@ public class ColorRect extends Rectangle {
 		return COLOR;
 	}
 
-	public void setColor(Color c) {
+	public void setColot(Color c) {
 		this.COLOR = c;
 	}
 

@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-// consider shifting array "cube" to orient cube and rename Faces: "one" ... "six" then assign connected faces to the face for modular implementation of rotation, not hardcoded
 // http://zetcode.com/
 
 public class RubiksCube {
@@ -15,24 +14,42 @@ public class RubiksCube {
 	 *		 B 5 B
 	 *		 B B B
 	 */
-
-	// public int orient = 2; // which side is up
 	// #0
-	public Face G = new Face('g');
+	public Face G;
 	// #1
-	public Face O = new Face('o');
+	public Face O;
 	// #2
-	public Face W = new Face('w');
+	public Face W;
 	// #3
-	public Face R = new Face('r');
+	public Face R;
 	// #4
-	public Face Y = new Face('y');
+	public Face Y;
 	// #5
-	public Face B = new Face('b');
+	public Face B;
 
-	public Face[] cube = { G, O, W, R, Y, B };
+	public Face[] cube = new Face[] { G, O, W, R, Y, B };
 
-	public RubiksCube() {
+	public RubiksCube(boolean useRectFace) {
+		if (useRectFace) {
+			G = new RectFace();
+			O = new RectFace();
+			W = new RectFace();
+			R = new RectFace();
+			Y = new RectFace();
+			B = new RectFace();
+		}
+		else {
+			G = new Face('g');
+			O = new Face('o');
+			W = new Face('w');
+			R = new Face('r');
+			Y = new Face('y');
+			B = new Face('b');
+		}
+		linkSides();
+	}
+	
+	private void linkSides() {
 		G.setAbove(Y);
 		G.setBelow(W);
 		G.setLeft(O);
@@ -61,7 +78,6 @@ public class RubiksCube {
 
 	public void print() {
 		G.print("      ");
-		System.out.println();
 		for (int i = 0; i < 3; i++)
 		{
 			O.printRow(i);
@@ -88,7 +104,7 @@ public class RubiksCube {
 		}
 	}
 
-	public char[] get(int i) {
+	public Face get(int i) {
 		return cube[i];
 	}
 
@@ -126,7 +142,7 @@ public class RubiksCube {
 	}
 
 	public static void main(String[] args) {
-		RubiksCube cube = new RubiksCube();
+		RubiksCube cube = new RubiksCube(false);
 		Scanner console = intro(cube);
 		String s = console.nextLine();
 		while (s.length() > 0)
