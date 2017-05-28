@@ -8,11 +8,10 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JFrame;
 
 // https://docs.oracle.com/javase/tutorial/2d/advanced/user.html
-//TODO: Codereview
 
 @SuppressWarnings("serial")
 public class CubeHandler extends Canvas implements MouseListener, MouseMotionListener {
-	public static RubiksCube cube = new RubiksCube(true);
+	public static RubiksCube cube = new RubiksCube();
 	public static int SIZE_MOD = 40;
 	public static Color BACK_GND = Color.BLACK;
 
@@ -23,14 +22,11 @@ public class CubeHandler extends Canvas implements MouseListener, MouseMotionLis
 	@Override
 	public void paint(Graphics g) {
 		setBackground(BACK_GND);
-		RectFace face = (RectFace) cube.get(0);
-		face.paint(g, 3 * SIZE_MOD, 0, SIZE_MOD);
+		cube.get(0).paint(g, 3 * SIZE_MOD, 0, SIZE_MOD);
 		for (int i = 1; i < 6; i++) {
-			face = (RectFace) cube.get(i);
-			face.paint(g, SIZE_MOD * 3 * (i - 1), 3 * SIZE_MOD, SIZE_MOD);
+			cube.get(i).paint(g, SIZE_MOD * 3 * (i - 1), 3 * SIZE_MOD, SIZE_MOD);
 		}
-		face = (RectFace) cube.get(5);
-		face.paint(g, 3 * SIZE_MOD, 6 * SIZE_MOD, SIZE_MOD);
+		cube.get(5).paint(g, 3 * SIZE_MOD, 6 * SIZE_MOD, SIZE_MOD);
 	}
 
 	@Override

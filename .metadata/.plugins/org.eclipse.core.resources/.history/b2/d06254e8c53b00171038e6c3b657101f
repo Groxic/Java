@@ -8,7 +8,6 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JFrame;
 
 // https://docs.oracle.com/javase/tutorial/2d/advanced/user.html
-//TODO: Codereview
 
 @SuppressWarnings("serial")
 public class CubeHandler extends Canvas implements MouseListener, MouseMotionListener {

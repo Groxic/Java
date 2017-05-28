@@ -28,16 +28,14 @@ public class RubiksCube {
 
 	public Face[] cube = new Face[] { G, O, W, R, Y, B };
 
-	public final int SIZE_MOD = 40;
-
 	public RubiksCube(boolean useRectFace) {
 		if (useRectFace) {
-			G = new RectFace('g', 3, 0, SIZE_MOD);
-			O = new RectFace('o', 0, 3, SIZE_MOD);
-			W = new RectFace('w', 3, 3, SIZE_MOD);
-			R = new RectFace('r', 6, 3, SIZE_MOD);
-			Y = new RectFace('y', 9, 3, SIZE_MOD);
-			B = new RectFace('b', 3, 6, SIZE_MOD);
+			G = new RectFace('g');
+			O = new RectFace('o');
+			W = new RectFace('w');
+			R = new RectFace('r');
+			Y = new RectFace('y');
+			B = new RectFace('b');
 		}
 		else {
 			G = new Face('g');

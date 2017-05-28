@@ -27,7 +27,7 @@ public class RubiksCube {
 	public Face B;
 
 	public Face[] cube = new Face[] { G, O, W, R, Y, B };
-
+	
 	public final int SIZE_MOD = 40;
 
 	public RubiksCube(boolean useRectFace) {
