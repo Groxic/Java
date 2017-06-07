@@ -1,7 +1,6 @@
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -13,10 +12,10 @@ import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
 public class CubeHandler extends Canvas implements MouseListener, MouseMotionListener {
-	private static RubiksCube cube = new RubiksCube(true);
-	private static int SIZE_MOD = 40;
-	private static Color BACK_GND = Color.BLACK;
-	private Point mousePt;
+	public static RubiksCube cube = new RubiksCube(true);
+	public static int SIZE_MOD = 40;
+	public static Color BACK_GND = Color.BLACK;
+	private Point mousePT;
 
 	public CubeHandler() {
 
@@ -37,8 +36,8 @@ public class CubeHandler extends Canvas implements MouseListener, MouseMotionLis
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		int dx = (int) (e.getX() - mousePt.getX());
-		int dy = (int) (e.getY() - mousePt.getY());
+		int x = e.getX();
+		int y = e.getY();
 	}
 
 	@Override
@@ -63,11 +62,7 @@ public class CubeHandler extends Canvas implements MouseListener, MouseMotionLis
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		mousePt = e.getPoint();
-		Object cR = e.getSource();
-		if (cR instanceof ColorRect) {
-			System.out.println("yes");
-		}
+
 	}
 
 	@Override

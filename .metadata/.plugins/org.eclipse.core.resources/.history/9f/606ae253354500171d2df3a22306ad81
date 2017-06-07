@@ -37,8 +37,8 @@ public class CubeHandler extends Canvas implements MouseListener, MouseMotionLis
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		int dx = (int) (e.getX() - mousePt.getX());
-		int dy = (int) (e.getY() - mousePt.getY());
+		int dx = e.getX() - mousePt.getX();
+		int dy = e.getY() - mousePt.getY();
 	}
 
 	@Override
@@ -64,10 +64,6 @@ public class CubeHandler extends Canvas implements MouseListener, MouseMotionLis
 	@Override
 	public void mousePressed(MouseEvent e) {
 		mousePt = e.getPoint();
-		Object cR = e.getSource();
-		if (cR instanceof ColorRect) {
-			System.out.println("yes");
-		}
 	}
 
 	@Override

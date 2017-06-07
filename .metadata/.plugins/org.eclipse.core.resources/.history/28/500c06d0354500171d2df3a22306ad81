@@ -67,6 +67,9 @@ public class CubeHandler extends Canvas implements MouseListener, MouseMotionLis
 		Object cR = e.getSource();
 		if (cR instanceof ColorRect) {
 			System.out.println("yes");
+		}Object cR = e.getSource();
+		if (cR instanceof ColorRect) {
+			System.out.println("yes");
 		}
 	}
 

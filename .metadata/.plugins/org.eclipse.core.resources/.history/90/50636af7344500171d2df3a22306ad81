@@ -16,7 +16,7 @@ public class CubeHandler extends Canvas implements MouseListener, MouseMotionLis
 	private static RubiksCube cube = new RubiksCube(true);
 	private static int SIZE_MOD = 40;
 	private static Color BACK_GND = Color.BLACK;
-	private Point mousePt;
+	private Point mousePT;
 
 	public CubeHandler() {
 
@@ -37,8 +37,8 @@ public class CubeHandler extends Canvas implements MouseListener, MouseMotionLis
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		int dx = (int) (e.getX() - mousePt.getX());
-		int dy = (int) (e.getY() - mousePt.getY());
+		int x = e.getX();
+		int y = e.getY();
 	}
 
 	@Override
@@ -63,11 +63,7 @@ public class CubeHandler extends Canvas implements MouseListener, MouseMotionLis
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		mousePt = e.getPoint();
-		Object cR = e.getSource();
-		if (cR instanceof ColorRect) {
-			System.out.println("yes");
-		}
+
 	}
 
 	@Override
