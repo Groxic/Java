@@ -4,10 +4,10 @@ import java.util.Arrays;
 public class Face {
 	protected final int SIZE = 3;
 	public char[][] face = new char[SIZE][SIZE];
-	private Face aboveFace;
-	private Face belowFace;
-	private Face leftFace;
-	private Face rightFace;
+	protected Face aboveFace;
+	protected Face belowFace;
+	protected Face leftFace;
+	protected Face rightFace;
 
 	public Face(char c) {
 		for (int i = 0; i < SIZE; i++) {

@@ -6,8 +6,8 @@ import java.awt.RenderingHints;
 public class RectFace extends Face {
 	public ColorRect[][] rectFace = new ColorRect[SIZE][SIZE];
 
-	public void paint(Graphics g, int x, int y, int STEP) {
-		Graphics2D g2d = (Graphics2D) g;
+	public void paint(Graphics2D g2d, int x, int y, int STEP) {
+		// Graphics2D g2d = (Graphics2D) g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		ColorRect colR;
 		for (int r = 0; r < SIZE; r++) {
@@ -22,16 +22,24 @@ public class RectFace extends Face {
 	@Override
 	public void rotateClockWise() {
 		super.rotateClockWise();
-		updateFace();
+		updateAllFaces();
 	}
 
 	@Override
 	public void rotateCounterClockWise() {
 		super.rotateCounterClockWise();
-		updateFace();
+		updateAllFaces();
 	}
 
-	private void updateFace() {
+	private void updateAllFaces() {
+		updateFace();
+		((RectFace) aboveFace).updateFace();
+		((RectFace) belowFace).updateFace();
+		((RectFace) rightFace).updateFace();
+		((RectFace) leftFace).updateFace();
+	}
+	
+	public void updateFace() {
 		for (int i = 0; i < SIZE; i++) {
 			for (int j = 0; j < SIZE; j++) {
 				rectFace[i][j].setColor(getColor(face[i][j]));

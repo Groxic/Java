@@ -139,7 +139,7 @@ public class RubiksCube {
 	public static Scanner intro(RubiksCube cube) {
 		cube.print();
 		System.out.println(
-				"Enter the center letter of the face you want to rotate clockwise (include \"\'\" to reverse rotation, enter to exit)");
+				"Enter the center letter of the face you want to rotate clockwise (include ' to reverse rotation, enter to exit)");
 		return new Scanner(System.in);
 	}
 
